@@ -41,7 +41,6 @@ import java.util.Objects;
 public class BodiesFragment extends Fragment {
 
     private ImageView BodyPicture;
-    private GridLayout gvUnBodies;
     private Uri photoUri;
     public Context context;
 
@@ -113,13 +112,9 @@ public class BodiesFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_bodies, container, false);
         BodyPicture = view.findViewById(R.id.BodyPicture);
         Button selectImageButton = view.findViewById(R.id.select_image_button);
-        gvUnBodies = view.findViewById(R.id.gvUnBodies);
         context = getContext();
 
         selectImageButton.setOnClickListener(v -> {
-            /*if (checkPermissions()) {
-                openImagePickerDialog();
-            }*/
             if(checkPermissions())
             {
                 showImagePickerDialog();
@@ -160,51 +155,4 @@ public class BodiesFragment extends Fragment {
         return true;
     }
 
-    // Open a dialog to choose between the camera and gallery
-    private void openImagePickerDialog() {
-        // Intent to capture image from camera
-        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-        // Create a file to save the image from the camera
-        File photoFile = null;
-        try {
-            photoFile = createImageFile();
-        } catch (IOException ex) {
-            Toast.makeText(context, "Error occurred while creating file", Toast.LENGTH_SHORT).show();
-        }
-
-        if (photoFile != null) {
-            photoUri = FileProvider.getUriForFile(context, "com.example.morgue_module.fileprovider", photoFile);
-            cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, photoUri);
-        }
-
-        // Intent to pick image from gallery
-        Intent pickPhotoIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-
-        // Intent chooser for both camera and gallery
-        Intent chooser = Intent.createChooser(pickPhotoIntent, "Select or Capture Image");
-        chooser.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[]{cameraIntent});
-
-        imagePickerLauncher.launch(chooser);
-    }
-
-    // Create a file for the image to be saved from the camera
-    private File createImageFile() throws IOException {
-        // Create an image file name
-        String imageFileName = "JPEG_" + System.currentTimeMillis() + "_";
-        File storageDir = context.getExternalFilesDir(null);
-        return File.createTempFile(imageFileName, ".jpg", storageDir);
-    }
-
-    // Handle the permission result
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (requestCode == 100) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                openImagePickerDialog();
-            } else {
-                Toast.makeText(context, "Permissions are required to access camera and storage", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
 }

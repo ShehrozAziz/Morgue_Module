@@ -24,6 +24,10 @@ public class OrdersPagerAdapter extends FragmentStateAdapter {
             {
                 return new BodiesFragment();
             }
+            case 2:
+            {
+                return new MorgueFragment();
+            }
             default:
             {
                 return new ProfileFragment();
@@ -34,6 +38,6 @@ public class OrdersPagerAdapter extends FragmentStateAdapter {
 
     @Override
     public int getItemCount() {
-        return 3;
+        return 4;
     }
 }

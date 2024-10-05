@@ -63,6 +63,16 @@ public class MainActivity extends AppCompatActivity {
                     }
                     case 2:
                     {
+                        tab.setText("Morgue");
+                        tab.setIcon(R.drawable.ic_cabin);
+                        Pending = tab.getOrCreateBadge();
+                        Pending.setMaxCharacterCount(3);
+                        Pending.setNumber(20);
+                        Pending.setVisible(true);
+                        break;
+                    }
+                    case 3:
+                    {
                         tab.setText("Profile");
                         tab.setIcon(R.drawable.ic_person);
                         break;
