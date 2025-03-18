@@ -16,8 +16,8 @@ import android.widget.Toast;
 public class MorgueFragment extends Fragment {
 
     GridLayout gridLayout1;
-    int numRows = 10;
-    int numCols = 30;
+    public static int numRows = 10;
+    public static int numCols = 30;
     Context context;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)

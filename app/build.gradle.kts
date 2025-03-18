@@ -39,6 +39,13 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
-    implementation ("androidx.activity:activity-ktx:1.6.0")   // Required for the Activity Result API
-    implementation ("androidx.fragment:fragment-ktx:1.5.0")
+    implementation ("androidx.activity:activity-ktx:1.6.0")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation ("com.squareup.okhttp3:okhttp:4.10.0")
+
+    implementation("javax.websocket:javax.websocket-api:1.1")
+    implementation("org.java-websocket:Java-WebSocket:1.5.2")
+    implementation("com.google.code.gson:gson:2.8.9")
+    implementation ("org.java-websocket:Java-WebSocket:1.5.3")
 }

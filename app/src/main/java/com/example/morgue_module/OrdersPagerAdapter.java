@@ -18,26 +18,20 @@ public class OrdersPagerAdapter extends FragmentStateAdapter {
         {
             case 0:
             {
-                return new PendingOrdersFragment();
-            }
-            case 1:
-            {
                 return new BodiesFragment();
-            }
-            case 2:
-            {
-                return new MorgueFragment();
             }
             default:
             {
-                return new ProfileFragment();
+
+                return new BodiesGallery();
             }
+
         }
     }
 
 
     @Override
     public int getItemCount() {
-        return 4;
+        return 2;
     }
 }
